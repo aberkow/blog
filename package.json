@@ -1,0 +1,29 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A blog made with react, node, mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "blog",
+    "node",
+    "mongo",
+    "react"
+  ],
+  "author": "Adam Berkowitz",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jquery": "^2.2.4",
+    "mongoose": "^4.4.19"
+  }
+}
