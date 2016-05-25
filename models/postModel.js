@@ -1,17 +1,16 @@
 var mongoose = require('mongoose');
-
+//holds all data for model abstraction.
 //look at mongoose docs for validation
 var PostSchema = new mongoose.Schema({
-  author: String,
-  title: String,
-  //date: {type: String, required: true},
+  author: {type: String},
+  title: {type: String},
+  //date: {type: Date, default: Date.now},
   //tags: {type: Array, required: false},
-  text: String
+  text: {type: String}
+
 });
 
 var Post = mongoose.model('Post', PostSchema);
 
-//var testPost = new Post('author', 'title', 'text');
-
 module.exports = Post;
-//module.exports = testPost;
+// new Post({author: 'testauth', title: 'testtitle', text: 'test'}).save();

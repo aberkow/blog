@@ -4,10 +4,12 @@ var Post = require('../services/postServices');
 
 //how to handle mutli-part req.body?
 router.post('/posts', function(req, res){
-  console.log(req);
-  Post.save(req.body.author, req.body.title, req.body.text, function(post){
+  //console.log(req);
+  Post.save({author: req.body.author, title: req.body.title, text: req.body.text}, function(post){
+    console.log('from routes', req.body);
     res.status(201).json(post);
   }, function(err){
+    console.log('there was an error...');
     res.status(400).json(err);
     //console.log('from routes', err);
   });
