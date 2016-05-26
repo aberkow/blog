@@ -1,18 +1,18 @@
-var Post = require('../models/postModel');
-
-
-
-
-//just pass one object called userData that holds all the attributes???????
-exports.save = function(userData, callback, errback){
-  Post.create(userData, function(err, post){
-      if (err){
-        errback(err);
-        return;
-      }
-      callback(post);
-  });
-};
+// var Post = require('../models/postModel');
+//
+//
+//
+//
+// //just pass one object called userData that holds all the attributes???????
+// exports.save = function(userData, callback, errback){
+//   Post.create(userData, function(err, post){
+//       if (err){
+//         errback(err);
+//         return;
+//       }
+//       callback(post);
+//   });
+// };
 
 
 // exports.save = function(author, title, date, tags, text, callback, errback){
