@@ -13,6 +13,7 @@ var PostSchema = new Schema({
 //mongoose model
 var Post = mongoose.model('Post', PostSchema);
 
+
 // PostSchema.methods.create = function(postDataObj, errback, callback){
 //   Post.create(postDataObj, function(err, post){
 //     if (err){
