@@ -24,71 +24,47 @@ router.post('/posts', function(req, res){
 router.get('/posts', function(req, res){
   Post.find(function(err, posts){
     if (err) {
-      res.send(err);
+      res.status(400).json(err);
       return;
     }
     res.json(posts);
   });
 });
 
-//UPDATE a post ---- this doesn't work yet.
-// router.update('/posts', function(req, res){
-//   var id = req.body._id;
-//   var newText = req.body.text;
-//
-//   Post.findByIdAndUpdate(id, newText, {new: true}, function(err, post){
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
-//     res.status(200).json(post);
-//   });
-// });
+//GET one post
+router.get('/posts/:id', function(req, res){
+  Post.findById(req.params.id, function(err, post){
+    if (err) {
+      res.status(400).json(err);
+      return;
+    }
+    res.json(post);
+  });
+});
+//{text: req.body.text} - you can pass in one object argument at a time, or the whole req.body.
+//UPDATE a post by id
+router.put('/posts/:id', function(req, res){
+  Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, post){
+    if (err) {
+      console.error('Post not updated', err);
+      return;
+    }
+    //console.log(req.body.text);
+    //debugger;
+    res.status(200).json(post);
+  });
+});
 
-
-// router.post('/posts', function(req, res){
-//   Post.create({author: req.body.author, title: req.body.title, text: req.body.text, date: req.body.date}, function(post){
-//     console.log('from routes', req.body);
-//     res.status(201).json(post);
-//   }, function(err){
-//     res.status(400).json(err);
-//   });
-// });
-
-
-
-
-
-
-
-//how to handle mutli-part req.body?
-// router.post('/posts', function(req, res){
-//   //console.log(req);
-//   Post.save({author: req.body.author, title: req.body.title, text: req.body.text}, function(post){
-//     console.log('from routes', req.body);
-//     res.status(201).json(post);
-//   }, function(err){
-//     console.log('there was an error...');
-//     res.status(400).json(err);
-//     //console.log('from routes', err);
-//   });
-// });
-//
-// router.get('/posts', function(req, res){
-//   Post.list(function(posts){
-//     res.json(posts);
-//   }, function(err){
-//     res.status(400).json(err);
-//     //console.log('from get routes', err);
-//   });
-// });
-
-// router.put(){
-//
-// }
-//
-// router.delete(){
-//
-// }
+//DELETE a post by id
+router.delete('/posts/:id', function(req, res){
+  Post.findByIdAndRemove(req.param.id, function(err){
+    if (err) {
+      console.error('Post not deleted', err);
+    return;
+    }
+    console.log('post deleted');
+    res.status(200).json({message: 'Post deleted.'});
+  });
+});
 
 module.exports = router;
