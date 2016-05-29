@@ -31,10 +31,21 @@ router.get('/posts', function(req, res){
   });
 });
 
-//GET one post
+//GET one post by ID
 router.get('/posts/:id', function(req, res){
   Post.findById(req.params.id, function(err, post){
     if (err) {
+      res.status(400).json(err);
+      return;
+    }
+    res.json(post);
+  });
+});
+
+//GET one post by title
+router.get('/posts/:title', function(req, res){
+  Post.findOne(req.params.title, function(err, post){
+    if (err){
       res.status(400).json(err);
       return;
     }
@@ -45,6 +56,17 @@ router.get('/posts/:id', function(req, res){
 //UPDATE a post by id
 router.put('/posts/:id', function(req, res){
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, post){
+    if (err) {
+      console.error('Post not updated', err);
+      return;
+    }
+    res.status(200).json(post);
+  });
+});
+
+//UPDATE a post by title
+router.put('/posts/:title', function(req, res){
+  Post.findOneAndUpdate(req.params.title, req.body, {new: true}, function(err, post){
     if (err) {
       console.error('Post not updated', err);
       return;
@@ -66,5 +88,18 @@ router.delete('/posts/:id', function(req, res){
     res.status(200).json({message: 'Post deleted.'});
   });
 });
+
+//DELETE a post by title
+router.delete('/posts/:title', function(req, res){
+  Post.findOneAndRemove(req.param.title, function(err){
+    if (err) {
+      console.error('Post not deleted', err);
+    return;
+    }
+    console.log('post deleted');
+    res.status(200).json({message: 'Post deleted.'});
+  });
+});
+
 
 module.exports = router;
