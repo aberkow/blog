@@ -73,7 +73,7 @@ router.put('/posts/:id', function(req, res){
       console.error('Post not updated', err);
       return;
     }
-    //console.log(req.body.text);
+    console.log(req.params);
     //debugger;
     res.status(200).json(post);
   });
