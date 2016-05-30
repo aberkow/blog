@@ -1,0 +1,15 @@
+//server.js
+
+var express = require('express');
+var app = express();
+var router = express.Router();
+require('./controllers/posts')(router);
+app.use('/', postRoutes);
+
+
+//controllers/posts.js
+module.exports = function(router){
+  router.get('/posts', function(req, res){
+    res.status(200);
+  });
+}

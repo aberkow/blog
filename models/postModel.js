@@ -33,3 +33,9 @@ PostSchema.virtual('test').get(function(){
 console.log(testPost.test);
 
 module.exports = Post;
+
+//best is to put these down here.
+//ataching method to the singleton (prototype)
+//MySchema.statics.instanceMethodA = function() {};
+//ataching method to the instance
+//new Post({})

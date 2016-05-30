@@ -19,6 +19,8 @@ var app = server.app;
 
 chai.use(chaiHttp);
 
+console.log(testSeed.fixtures.posts);
+
 describe('Blog Posts', function(){
   //go back to testSeed.js to seed the file 'before' testing.
   before(function(done){
@@ -46,17 +48,17 @@ describe('Blog Posts', function(){
         });
   });
   //this doesnt work yet.
-  // it('should list an individual post on GET by id', function(done){
-  //   Post.find({author: 'Stephen King'}, function(err, post){
-  //     var id = post[0][id];
-  //     chai.request(app)
-  //         .get('/posts/' + id)
-  //         .end(function(err, res){
-  //           console.log(res.body);
-  //           //res.should.have.status(200);
-  //           done();
-  //         });
-  //   });
+  it('should list an individual post on GET by id', function(done){
+    Post.find({author: 'Stephen King'}, function(err, post){
+      var id = post[0][id];
+      chai.request(app)
+          .get('/posts/' + id)
+          .end(function(err, res){
+            console.log(res.body);
+            //res.should.have.status(200);
+            done();
+          });
+    });
   });
   it('should add a new post on POST', function(done){
     chai.request(app)
