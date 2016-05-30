@@ -17,10 +17,12 @@ var testUser = new User({
   userName: 'testUser',
   firstName: 'Joe',
   lastName: 'Bob',
-  blogPost: [postModel]
+  blogPost: [{
+    title: 'test'
+  }]
 });
 debugger;
-//testUser.blogPost[0].title etc is still undefined.
+//testUser.blogPost[0].title etc is undefined if testUser.blogPost = [postModel]. But returns as expected if blogPost: [{ title: 'test'}]
 console.log(testUser.userName + ' ' + testUser.firstName + ' ' + testUser.lastName + ' ' + testUser.blogPost[0].title);
 
 

@@ -36,4 +36,4 @@ console.log(testPost.author + ' ' + testPost.title + ' ' + testPost.text + ' ' +
 
 //to get rid of errors - export the Schema not the model to the parent model. But... see userModel...
 module.exports = PostSchema;
-//module.exports = Post;
+module.exports = Post;
