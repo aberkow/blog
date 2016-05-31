@@ -1,105 +1,120 @@
-var express = require('express');
-var router = express.Router();
-//var Post = require('../services/postServices');
-var Post = require('../models/postModel');
-
-//POST a blogpost to /posts
-router.post('/posts', function(req, res){
-  var post = new Post();
-  post.author = req.body.author;
-  post.title = req.body.title;
-  post.text = req.body.text;
-  post.date = req.body.date;
-
-  post.save(function(err){
-    if (err) {
-      res.send(err);
-      return;
-    }
-    res.status(201).json(post);
-  });
-});
-
-//GET a list of all posts.
-router.get('/posts', function(req, res){
-  Post.find(function(err, posts){
-    if (err) {
-      res.status(400).json(err);
-      return;
-    }
-    res.json(posts);
-  });
-});
-
-//GET one post by ID
-router.get('/posts/:id', function(req, res){
-  Post.findById(req.params.id, function(err, post){
-    if (err) {
-      res.status(400).json(err);
-      return;
-    }
-    res.json(post);
-  });
-});
-
-//GET one post by title
-router.get('/posts/:title', function(req, res){
-  Post.findOne(req.params.title, function(err, post){
-    if (err){
-      res.status(400).json(err);
-      return;
-    }
-    res.json(post);
-  });
-});
-//{text: req.body.text} - you can pass in one object argument at a time, or the whole req.body.
-//UPDATE a post by id
-router.put('/posts/:id', function(req, res){
-  Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, post){
-    if (err) {
-      console.error('Post not updated', err);
-      return;
-    }
-    res.status(200).json(post);
-  });
-});
-
-//UPDATE a post by title
-router.put('/posts/:title', function(req, res){
-  Post.findOneAndUpdate(req.params.title, req.body, {new: true}, function(err, post){
-    if (err) {
-      console.error('Post not updated', err);
-      return;
-    }
-    //console.log(req.body.text);
-    //debugger;
-    res.status(200).json(post);
-  });
-});
-
-//DELETE a post by id
-router.delete('/posts/:id', function(req, res){
-  Post.findByIdAndRemove(req.param.id, function(err){
-    if (err) {
-      console.error('Post not deleted', err);
-    return;
-    }
-    console.log('post deleted');
-    res.status(200).json({message: 'Post deleted.'});
-  });
-});
-
-//DELETE a post by title
-router.delete('/posts/:title', function(req, res){
-  Post.findOneAndRemove(req.param.title, function(err){
-    if (err) {
-      console.error('Post not deleted', err);
-    return;
-    }
-    console.log('post deleted');
-    res.status(200).json({message: 'Post deleted.'});
-  });
-});
+module.exports = function(app){
+  var posts = require('../controllers/posts');
+  app.get('/posts', getPosts.findAll);
+  app.get('/posts/:id', getPosts.findById);
+  app.get('/posts/:title', getPosts.findByTitle);
+  app.get('/posts/:author', getPosts.findByAuthor);
+  app.post('/posts', addPosts.add);
+  app.put('/posts/:id', updatePosts.updateById);
+  app.put('/posts/:title', updatePosts.updateByTitle);
+  app.delete('/posts/:id', posts.deleteById);
+  app.delete('/posts/:title', posts.deleteByTitle);
+}
 
 
-module.exports = router;
+
+
+// var express = require('express');
+// var router = express.Router();
+// var Post = require('../models/postModel');
+//
+// //POST a blogpost to /posts
+// router.post('/posts', function(req, res){
+//   var post = new Post();
+//   post.author = req.body.author;
+//   post.title = req.body.title;
+//   post.text = req.body.text;
+//   post.date = req.body.date;
+//
+//   post.save(function(err){
+//     if (err) {
+//       res.send(err);
+//       return;
+//     }
+//     res.status(201).json(post);
+//   });
+// });
+//
+// //GET a list of all posts.
+// router.get('/posts', function(req, res){
+//   Post.find(function(err, posts){
+//     if (err) {
+//       res.status(400).json(err);
+//       return;
+//     }
+//     res.json(posts);
+//   });
+// });
+//
+// //GET one post by ID
+// router.get('/posts/:id', function(req, res){
+//   Post.findById(req.params.id, function(err, post){
+//     if (err) {
+//       res.status(400).json(err);
+//       return;
+//     }
+//     res.json(post);
+//   });
+// });
+//
+// //GET one post by title
+// router.get('/posts/:title', function(req, res){
+//   Post.findOne(req.params.title, function(err, post){
+//     if (err){
+//       res.status(400).json(err);
+//       return;
+//     }
+//     res.json(post);
+//   });
+// });
+// //{text: req.body.text} - you can pass in one object argument at a time, or the whole req.body.
+// //UPDATE a post by id
+// router.put('/posts/:id', function(req, res){
+//   Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, post){
+//     if (err) {
+//       console.error('Post not updated', err);
+//       return;
+//     }
+//     res.status(200).json(post);
+//   });
+// });
+//
+// //UPDATE a post by title
+// router.put('/posts/:title', function(req, res){
+//   Post.findOneAndUpdate(req.params.title, req.body, {new: true}, function(err, post){
+//     if (err) {
+//       console.error('Post not updated', err);
+//       return;
+//     }
+//     //console.log(req.body.text);
+//     //debugger;
+//     res.status(200).json(post);
+//   });
+// });
+//
+// //DELETE a post by id
+// router.delete('/posts/:id', function(req, res){
+//   Post.findByIdAndRemove(req.param.id, function(err){
+//     if (err) {
+//       console.error('Post not deleted', err);
+//     return;
+//     }
+//     console.log('post deleted');
+//     res.status(200).json({message: 'Post deleted.'});
+//   });
+// });
+//
+// //DELETE a post by title
+// router.delete('/posts/:title', function(req, res){
+//   Post.findOneAndRemove(req.param.title, function(err){
+//     if (err) {
+//       console.error('Post not deleted', err);
+//     return;
+//     }
+//     console.log('post deleted');
+//     res.status(200).json({message: 'Post deleted.'});
+//   });
+// });
+//
+//
+// module.exports = router;

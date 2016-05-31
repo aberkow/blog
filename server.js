@@ -1,9 +1,9 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
-var postRoutes = require('./routes/postRoutes');
-// var router = express.Router();
-// require('./controllers/posts')(router);
+//var postRoutes = require('./routes/postRoutes');
+var router = express.Router();
+require('./controllers/posts')(router);
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,7 +24,7 @@ app.use(express.static('public'));
 //   next();
 // });
 
-app.use('/', postRoutes);
+//app.use('/', postRoutes);
 app.use('*', function(req, res){
   res.status(404).json({message: 'Not Found'});
 });
