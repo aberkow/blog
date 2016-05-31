@@ -3,8 +3,6 @@ What is the point of these tests when they use different methods
 than those used in postRoutes? Doesn't that mean they aren't really testing the code that will be used in production?
 */
 
-
-
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 
@@ -34,7 +32,7 @@ describe('Blog Posts', function(){
         .end(function(err, res){
           res.should.have.status(200);
           res.body.should.be.an('array');
-          console.log(res.body);
+          //console.log(res.body);
           res.body[0].should.be.an('object');
           res.body[0].should.have.property('_id');
           res.body[0]._id.should.be.a('string');
@@ -47,19 +45,30 @@ describe('Blog Posts', function(){
           done();
         });
   });
-  //this doesnt work yet.
   it('should list an individual post on GET by id', function(done){
-    Post.find({author: 'Stephen King'}, function(err, post){
-      var id = post[0][id];
+    var testId = testSeed.fixtures[0].posts.id;
+    Post.findById(testId, function(err, post){
       chai.request(app)
-          .get('/posts/' + id)
+          .get('/posts/' + testId)
           .end(function(err, res){
             console.log(res.body);
-            //res.should.have.status(200);
-            done();
           });
     });
   });
+
+  //this doesnt work yet.
+  // it('should list an individual post on GET by id', function(done){
+  //   Post.find({author: 'Stephen King'}, function(err, post){
+  //     var id = post[0][id];
+  //     chai.request(app)
+  //         .get('/posts/' + id)
+  //         .end(function(err, res){
+  //           console.log(res.body);
+  //           //res.should.have.status(200);
+  //           done();
+  //         });
+  //   });
+  // });
   it('should add a new post on POST', function(done){
     chai.request(app)
         .post('/posts')
