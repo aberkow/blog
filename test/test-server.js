@@ -46,7 +46,8 @@ describe('Blog Posts', function(){
         });
   });
   it('should list an individual post on GET by id', function(done){
-    var testId = testSeed.fixtures[0].posts.id;
+    //var testId = testSeed.fixtures[0].posts.id;
+    console.log(testSeed.fixtures);
     Post.findById(testId, function(err, post){
       chai.request(app)
           .get('/posts/' + testId)
@@ -97,7 +98,7 @@ describe('Blog Posts', function(){
   // })
 //try using '/posts/' + mongoose.Types.ObjectId();
     it('should delete a post on DELETE', function(done){
-
+      done();
     });
 
   // it('should delete a post on DELETE', function(done){
