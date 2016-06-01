@@ -15,7 +15,7 @@ exports.run = function(callback, errback){
         return;
       }
       //fill the empty obj with the posts
-      //exports.fixtures.posts = posts;
+      exports.fixtures = posts;
 
       callback(posts);
   });

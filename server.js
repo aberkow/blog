@@ -1,10 +1,12 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
-//require('./controllers/posts')(router);
+
 var app = express();
 var router = express.Router();
-var postRoutes = require('./routes/postRoutes')(router);
+//the controller has to go after the router otherwise it throws an error of undefined.
+require('./controllers/controllerIndex')(router);
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,8 +30,8 @@ app.use(function(req, res, next){
 //why does this need to be taken out? When it's in I get an error.
 //app.use('/', postRoutes);
 
-//app.use(router) hooks the controllers, routes, and server together.
-app.use(router);
+//app.use(router) hooks the controllers and server together.
+app.use('/', router);
 app.use('*', function(req, res){
   debugger;
   res.status(404).json({message: 'Not Found'});

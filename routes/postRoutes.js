@@ -9,7 +9,8 @@ module.exports = function(router){
   router.get('/posts/:title', getPosts.findByTitle);
   router.get('/posts/:author', getPosts.findByAuthor);
   //POST posts
-  router.post('/posts', addPosts.add);
+
+  //router.post('/posts', addPosts.add);
   //PUT posts
   router.put('/posts/:id', updatePosts.updateById);
   router.put('/posts/:title', updatePosts.updateByTitle);
