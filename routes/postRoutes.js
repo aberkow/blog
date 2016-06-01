@@ -1,14 +1,21 @@
-module.exports = function(app){
-  var posts = require('../controllers/posts');
-  app.get('/posts', getPosts.findAll);
-  app.get('/posts/:id', getPosts.findById);
-  app.get('/posts/:title', getPosts.findByTitle);
-  app.get('/posts/:author', getPosts.findByAuthor);
-  app.post('/posts', addPosts.add);
-  app.put('/posts/:id', updatePosts.updateById);
-  app.put('/posts/:title', updatePosts.updateByTitle);
-  app.delete('/posts/:id', posts.deleteById);
-  app.delete('/posts/:title', posts.deleteByTitle);
+module.exports = function(router){
+  var getPosts = require('../controllers/getPosts');
+  var addPosts = require('../controllers/addPosts');
+  var updatePosts = require('../controllers/updatePosts');
+  var deletePosts = require('../controllers/deletePosts');
+  //GET posts
+  router.get('/posts', getPosts.findAll);
+  router.get('/posts/:id', getPosts.findById);
+  router.get('/posts/:title', getPosts.findByTitle);
+  router.get('/posts/:author', getPosts.findByAuthor);
+  //POST posts
+  router.post('/posts', addPosts.add);
+  //PUT posts
+  router.put('/posts/:id', updatePosts.updateById);
+  router.put('/posts/:title', updatePosts.updateByTitle);
+  //DELETE posts
+  router.delete('/posts/:id', deletePosts.deleteById);
+  router.delete('/posts/:title', deletePosts.deleteByTitle);
 }
 
 
