@@ -7,8 +7,6 @@ var router = express.Router();
 //the controller has to go after the router otherwise it throws an error of undefined.
 require('./controllers/controllerIndex')(router);
 
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));

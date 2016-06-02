@@ -3,7 +3,7 @@ var Post = require('../models/postModel');
 //export a function that extendds the router.
 //default in this case is a node reserved word.
 exports.default = function(router){
-  debugger;
+  //debugger;
   //get
   router.get('/posts', function(req, res){
     Post.find({}, function(err, posts){
