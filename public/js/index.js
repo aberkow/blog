@@ -22,6 +22,28 @@ $(document).ready(function(){
 
 });
 
+$.post('/login', { username: "test", password : "1234"}, 
+    function(returnedData){
+         console.log(returnedData);
+}).fail(function(){
+      console.log("error");
+});
+
+// $.ajax({
+//   url: '/login',
+//   data: {
+//     username: 'test',
+//     password: '1234'
+//   },
+//   dataType: 'JSON',
+//   type: 'GET'
+// })
+// .done(function(response){
+//   console.log(response, 'ajax response');
+// })
+// .fail(function(jqXHR, error){
+//   console.log(error);
+// });
 
 
 // var BlogPost = function(){

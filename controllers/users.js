@@ -2,6 +2,10 @@ var User = require('../models/userModel');
 
 exports.default = function(router){
 
+  // router.get('/users', function(req, res){
+  //   User.find({}, function)
+  // });
+
   //get list of users???
   // rouer.get('/users', function(req, res){
   //   User.find({}, function(err, users){
@@ -15,13 +19,14 @@ exports.default = function(router){
   //post login w/ basic validation
   router.post('/login', function(req, res){
     //check that there's a req.body
+    console.log(req.body, 'check proper request');
     if (!req.body){
       return res.status(400).json({
         message: 'No request body'
       });
     }
     //make sure there's a username
-    if (!(username in req.body)){
+    if (!('username' in req.body)){
       return res.status(422).json({
         message: 'Missing field: username'
       });
@@ -43,7 +48,7 @@ exports.default = function(router){
       });
     }
     //make sure there's a password
-    if (!(password in req.body)){
+    if (!('password' in req.body)){
       return res.status(422).json({
         message: 'Missing field: password'
       });
@@ -69,8 +74,19 @@ exports.default = function(router){
       username: username,
       password: password
     });
-    //
-  })
+
+    //every time a user is logged in there needs to be a response.
+    if (user) {
+      return res.status(200).json({
+        message: 'user logged in'
+      });
+      //return res.render()
+    } else {
+      return res.status(500).json({
+        message: 'server error'
+      });
+    }
+  });
 }
 
 
