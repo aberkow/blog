@@ -6,6 +6,9 @@ var PostSchema = new Schema({
   author: String,
   title: String,
   text: String,
+  //each post has a user because it's easier to maintain.
+  //check to see if ref 'User' needs to be required.
+  user: { type: Schema.Types.ObjectId, ref: 'User' }
   //date: {type: Date, default: Date.now},
   //testId: Schema.Types.ObjectId
 });

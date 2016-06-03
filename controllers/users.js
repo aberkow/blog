@@ -2,8 +2,14 @@ var User = require('../models/userModel');
 
 exports.default = function(router){
 
-  // router.get('/users', function(req, res){
-  //   User.find({}, function)
+  // router.get('/login', function(req, res){
+  //   console.log(req.body);
+  //   User.find({}, function(err, users){
+  //     if (err){
+  //       return res.status(400).json(err);
+  //     }
+  //     res.status(200).json(users);
+  //   });
   // });
 
   //get list of users???
@@ -15,6 +21,9 @@ exports.default = function(router){
   //     res.status(200).json(users);
   //   });
   // });
+
+//check http base authentication
+//use basic auth js as a middleware
 
   //post login w/ basic validation
   router.post('/login', function(req, res){
@@ -77,10 +86,10 @@ exports.default = function(router){
 
     //every time a user is logged in there needs to be a response.
     if (user) {
-      return res.status(200).json({
+      res.status(200).json({
         message: 'user logged in'
       });
-      //return res.render()
+      
     } else {
       return res.status(500).json({
         message: 'server error'

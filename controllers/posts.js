@@ -1,5 +1,5 @@
 var Post = require('../models/postModel');
-
+var middleware = require('../middleware');
 //export a function that extendds the router.
 //default in this case is a node reserved word.
 exports.default = function(router){
@@ -58,7 +58,7 @@ exports.default = function(router){
   // });
 
   //update
-  router.put('/posts/:id', function(req, res){
+  router.put('/posts/:id', middleware.auth, function(req, res){
     Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, post){
       if (err){
         console.error('Post not updated', err);
@@ -68,7 +68,7 @@ exports.default = function(router){
     });
   });
   //create
-  router.post('/posts', function(req, res){
+  router.post('/posts', middleware.auth, function(req, res){
     Post.create(req.body, function(err, post){
       if (err){
         res.status(403).json({});
@@ -79,7 +79,7 @@ exports.default = function(router){
     });
   });
   //delete
-  router.delete('/posts/:id', function(req, res){
+  router.delete('/posts/:id', middleware.auth, function(req, res){
     Post.findByIdAndRemove(req.param.id, function(err){
       if (err) {
         console.error('Post not deleted', err);

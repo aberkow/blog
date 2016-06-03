@@ -3,13 +3,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
-
 var app = express();
 var router = express.Router();
 //the controller has to go after the router otherwise it throws an error of undefined.
 require('./controllers/controllerIndex')(router);
 
-
+//also look at json web token w express.
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
