@@ -4,9 +4,27 @@ var Post = require('../models/postModel');
 //default in this case is a node reserved word.
 exports.default = function(router){
   //get
+  //this is from wednesday night session - break to new branch to test.
+  // router.get('/posts', function(req, res){
+  //   Post.find({})
+  //   .where(req.query.where || '')
+  //         .sort(req.query.sort || '')
+  //         .select(req.query.select || '')
+  //         .limit(req.query.limit || '')
+  //         .skip(req.query.skip || '')
+  //         .populate(req.query.populate || '')
+  //   .exec( function(err, posts){
+  //     if (err) {
+  //       res.status(400).json(err);
+  //       return;
+  //     }
+  //     res.status(200).json(posts);
+  //   });
+  // });
+
   router.get('/posts', function(req, res){
     Post.find({}, function(err, posts){
-      if (err) {
+      if (err){
         res.status(400).json(err);
         return;
       }
@@ -14,18 +32,30 @@ exports.default = function(router){
     });
   });
 
-  //get filter
-  // example of filtering /posts/filter?type='title'&query='my first post'
-  router.get('/posts/filter', function(req, res){
-    var query = {};
-    query[req.query.type || 'title'] = req.query.query;
-    Post.find(query, function(err, posts){
+  router.get('/posts/:id', function(req, res){
+    console.log({_id: req.params.id}, 'id test');
+    Post.findOne({_id: req.params.id})
+    .exec( function(err, posts){
+      console.log(arguments, 'arguments');
       if (err) {
-        return res.status(400).json(err);
+        res.status(400).json(err);
+        return;
       }
       res.status(200).json(posts);
     });
   });
+  //get filter
+  // example of filtering /posts/filter?type='title'&query='my first post'
+  // router.get('/posts/filter', function(req, res){
+  //   var query = {};
+  //   query[req.query.type || 'title'] = req.query.query;
+  //   Post.find(query, function(err, posts){
+  //     if (err) {
+  //       return res.status(400).json(err);
+  //     }
+  //     res.status(200).json(posts);
+  //   });
+  // });
 
   //update
   router.put('/posts/:id', function(req, res){

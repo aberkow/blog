@@ -1,8 +1,16 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
-  userName: {type: String, required: true}
-  //password: {type: String, required: true}
+  username: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+  //should I bring in my postModel as a subdocument?
 });
 
 var User = mongoose.model('User', UserSchema);

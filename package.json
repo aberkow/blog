@@ -22,9 +22,12 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "bcrypt": "^0.8.6",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "jquery": "^2.2.4",
-    "mongoose": "^4.4.19"
+    "mongoose": "^4.4.19",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0"
   }
 }

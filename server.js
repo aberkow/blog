@@ -1,6 +1,8 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+
 
 var app = express();
 var router = express.Router();
@@ -10,6 +12,7 @@ require('./controllers/controllerIndex')(router);
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 

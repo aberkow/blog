@@ -47,14 +47,20 @@ describe('Blog Posts', function(){
   });
   it('should list an individual post on GET by id', function(done){
     //var testId = testSeed.fixtures[0].posts.id;
-    console.log(testSeed.fixtures);
-    Post.findById(testId, function(err, post){
-      chai.request(app)
-          .get('/posts/' + testId)
-          .end(function(err, res){
-            console.log(res.body);
-          });
-    });
+    // console.log(testSeed.fixtures);
+    // Post.findById(testId, function(err, post){
+    //   chai.request(app)
+    //       .get('/posts/' + testId)
+    //       .end(function(err, res){
+    //         console.log(res.body);
+    //       });
+    // });
+    chai.request(app)
+        .get('/posts/574fa235a239d33c087dec0e')
+        .end(function(err, res){
+          //res.should.have.status(200);
+          console.log(res.body, 'second request');
+        })
   });
 
   //this doesnt work yet.
