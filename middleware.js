@@ -13,10 +13,13 @@ module.exports.auth = function (req, res, next) {
   };
 
   if (user.name === 'test' && user.pass === '1234') {
+<<<<<<< HEAD
 
     debugger;
     res.render('/posts');
 
+=======
+>>>>>>> parent of a952ef3... working on authorization
     return next();
   } else {
     return unauthorized(res);

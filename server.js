@@ -1,10 +1,14 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
+<<<<<<< HEAD
 
 //var passport = require('passport');
 var basicAuth = require('basic-auth');
 var morgan = require('morgan');
+=======
+var passport = require('passport');
+>>>>>>> parent of a952ef3... working on authorization
 
 var app = express();
 var router = express.Router();
@@ -20,6 +24,7 @@ app.use(express.static('public'));
 
 //handles headers/cookies, body, session... contextual data
 //e.g. req.session
+<<<<<<< HEAD
 // app.use('/', function(req, res, next){
 //   console.log(req.originalUrl);
 //   console.log(req.baseUrl);
@@ -31,6 +36,19 @@ app.use(express.static('public'));
 //   console.log('/', req.method, req.baseUrl, req.hostname, req.ip, req.originalUrl, req.path, req.protocol);
 //   next();
 // });
+=======
+app.use('/', function(req, res, next){
+  console.log(req.originalUrl);
+  console.log(req.baseUrl);
+  console.log(req.path);
+  next();
+});
+
+app.use(function(req, res, next){
+  console.log('/', req.method, req.baseUrl, req.hostname, req.ip, req.originalUrl, req.path, req.protocol);
+  next();
+});
+>>>>>>> parent of a952ef3... working on authorization
 
 //why does this need to be taken out? When it's in I get an error.
 //app.use('/', postRoutes);
