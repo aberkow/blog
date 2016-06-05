@@ -22,12 +22,12 @@ $(document).ready(function(){
 
 });
 
-$.post('/login', { username: "test", password : "1234"}, 
-    function(returnedData){
-         console.log(returnedData);
-}).fail(function(){
-      console.log("error");
-});
+// $.post('/login', { username: "test", password : "1234"},
+//     function(returnedData){
+//          console.log(returnedData);
+// }).fail(function(){
+//       console.log("error");
+// });
 
 // $.ajax({
 //   url: '/login',
