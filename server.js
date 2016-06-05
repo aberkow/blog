@@ -1,14 +1,9 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
-<<<<<<< HEAD
-
 //var passport = require('passport');
 var basicAuth = require('basic-auth');
 var morgan = require('morgan');
-=======
-var passport = require('passport');
->>>>>>> parent of a952ef3... working on authorization
 
 var app = express();
 var router = express.Router();
