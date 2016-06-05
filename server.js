@@ -1,9 +1,11 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
+
 //var passport = require('passport');
 var basicAuth = require('basic-auth');
 var morgan = require('morgan');
+
 var app = express();
 var router = express.Router();
 //the controller has to go after the router otherwise it throws an error of undefined.
@@ -29,9 +31,6 @@ app.use(express.static('public'));
 //   console.log('/', req.method, req.baseUrl, req.hostname, req.ip, req.originalUrl, req.path, req.protocol);
 //   next();
 // });
-
-//app.get('/', )
-
 
 //why does this need to be taken out? When it's in I get an error.
 //app.use('/', postRoutes);
