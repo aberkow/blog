@@ -1,7 +1,7 @@
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
-var passport = require('passport');
+//var passport = require('passport');
 
 var app = express();
 var router = express.Router();
@@ -28,6 +28,9 @@ app.use(function(req, res, next){
   console.log('/', req.method, req.baseUrl, req.hostname, req.ip, req.originalUrl, req.path, req.protocol);
   next();
 });
+
+//app.get('/', )
+
 
 //why does this need to be taken out? When it's in I get an error.
 //app.use('/', postRoutes);
