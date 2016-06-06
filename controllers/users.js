@@ -1,4 +1,5 @@
 var User = require('../models/userModel');
+var bcrypt = require('bcrypt');
 
 exports.default = function(router){
 
@@ -78,6 +79,25 @@ exports.default = function(router){
         message: 'Incorrect field length: username'
       });
     }
+
+    // //salt the password
+    // bcrypt.genSalt(10, function(err, salt){
+    //   if (err){
+    //     return res.status(500).json({
+    //       message: 'Internal server error'
+    //     });
+    //   }
+    //   //has the password
+    //   bcrypt.hash(password, salt, function(err, hash){
+    //     if (err){
+    //       return res.status(500).json({
+    //         message: 'Internal server error'
+    //       });
+    //     }
+    //
+    //   });
+    // });
+
     //create the user...?
     var user = new User({
       username: username,
@@ -86,6 +106,7 @@ exports.default = function(router){
 
     //every time a user is logged in there needs to be a response.
     if (user) {
+
       res.redirect('../posts');
       // res.status(200).json({
       //   message: 'user logged in'

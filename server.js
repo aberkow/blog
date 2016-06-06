@@ -8,6 +8,9 @@ var morgan = require('morgan');
 var app = express();
 var router = express.Router();
 //the controller has to go after the router otherwise it throws an error of undefined.
+
+app.set('view engine', 'ejs');
+
 require('./controllers/controllerIndex')(router);
 
 //also look at json web token w express.
@@ -32,8 +35,6 @@ app.use(express.static('public'));
 //   next();
 // });
 
-//why does this need to be taken out? When it's in I get an error.
-//app.use('/', postRoutes);
 app.use(morgan('dev'));
 //app.use(router) hooks the controllers and server together.
 app.use('/', router);
