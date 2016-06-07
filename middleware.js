@@ -13,11 +13,6 @@ module.exports.auth = function (req, res, next) {
   };
 
   if (user.name === 'test' && user.pass === '1234') {
-
-
-    debugger;
-    res.render('/posts');
-
     return next();
   } else {
     return unauthorized(res);

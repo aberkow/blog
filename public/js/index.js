@@ -1,25 +1,24 @@
-// var blogForm = $('#main__form');
-// var author = $('#main__form-author').val();
-// var title = $('#main__form-title').val();
-// var blogText = $('#main__form-text').val();
-// var post = $('#main__form-post');
+// var postContainer = $('.postView__container');
+// var postTitle = $('.postView__title');
+// var postAuthor = $('.postView__author');
+// var postText = $('.postView__text');
+// var postDelete = $('.postView__button-delete');
 
 $(document).ready(function(){
-  console.log('doc ready');
-  //var blogPost = new BlogPost();
-  // var blogForm = $('#main__form');
-  // var author = $('#main__form-author').val();
-  // var title = $('#main__form-title').val();
-  // var blogText = $('#main__form-text').val();
-  // var post = $('#main__form-post');
-  // blogForm.on('submit', function(evt){
-  //   console.log(author + ' ' + title + ' ' + blogText);
-  //   //debugger;
-  //   $('.postView__title').text(title);
-  //   $('.postView__author').text(author);
-  //   $('.postView__text').text(blogText);
-  // });
+  var postContainer = $('.postView__container');
+  var postTitle = $('.postView__title');
+  var postAuthor = $('.postView__author');
+  var postText = $('.postView__text');
+  var postDelete = $('.postView__button-delete');
+
+  //ajax request to get posts from api
   getPosts();
+  //test to make sure clicks register.
+  postContainer.on('click', function(evt){
+    target = $(evt.target);
+    console.log('click');
+    console.log(target);
+  });
 
 });
 
@@ -41,10 +40,13 @@ var showPosts = function(results){
     post.title = results[i].title;
     post.author = results[i].author;
     post.text = results[i].text;
-    post.html += "<div class='postView__item'><h2 class='postView__title'>" + post.title + "</h2>" + "<h3 class='postView__author'>" + post.author + "</h3>" + "<p class='postView__text'>" + post.text + "</p>" + "</div>"
+    post.html += "<div class='postView__container'><h2 class='postView__title'>" + post.title + "</h2>" + "<h3 class='postView__author'>" + post.author + "</h3>" + "<p class='postView__text'>" + post.text + "</p>" + "<button class='postView__button-delete'>Delete</button>" + "</div>"
   }
   $('.postView').append(post.html);
 }
+
+
+
 
 
 
