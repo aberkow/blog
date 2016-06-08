@@ -69,6 +69,7 @@ exports.default = function(router){
   });
   //create
   router.post('/posts', middleware.auth, function(req, res){
+    console.log(req.body);
     Post.create(req.body, function(err, post){
       if (err){
         res.status(403).json({});
