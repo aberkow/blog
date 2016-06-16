@@ -25,7 +25,7 @@ $(document).ready(function(){
 
   //ajax request to get posts from api
   getPosts();
-  deletePost();
+  deletePostView();
 
 });
 
@@ -73,12 +73,32 @@ var showPosts = function(results){
   $('.postView').append(post.html);
 }
 
-var deletePost = function(){
+var deletePost = function(postId){
+  var deletePost = {
+    postId: postId
+  }
+  $.ajax({
+    url: '/posts/' + deletePost.postId,
+    data: deletePost,
+    dataType: 'JSON',
+    method: 'DELETE'
+  })
+  .done(function(result){
+    console.log(result, 'from deletePost');
+
+  })
+  .fail(function(jqXHR, error){
+    console.log(error, 'from deletePost');
+  });
+}
+
+var deletePostView = function(){
   $(document).on('click', '.postView__button-delete', function(evt){
     evt.preventDefault();
     var targetId = $(evt.target).parent().attr('data-id');
-    console.log(targetId);
+    console.log(targetId, 'from deletePostView');
     var targetToRemove = $(evt.target).parent().remove();
+    deletePost(targetId);
   });
 }
 

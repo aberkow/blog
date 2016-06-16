@@ -80,14 +80,15 @@ exports.default = function(router){
     });
   });
   //delete
-  router.delete('/posts/:id', middleware.auth, function(req, res){
-    Post.findByIdAndRemove(req.param.id, function(err){
+  router.delete('/posts/:id', function(req, res){
+    Post.findByIdAndRemove(req.params.id, function(err){
       if (err) {
         console.error('Post not deleted', err);
       return;
       }
-      console.log('post deleted');
       res.status(200).json({message: 'Post deleted.'});
     });
   });
 };
+
+//
