@@ -76,6 +76,10 @@ exports.default = function(router){
         console.error('post not created', err);
         return;
       }
+      console.log(req.body, 'from router.post');
+      // if (req.body){
+      //   res.send(post);
+      // }
       res.send(post);
     });
   });
