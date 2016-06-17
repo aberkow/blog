@@ -64,6 +64,8 @@ exports.default = function(router){
         console.error('Post not updated', err);
         return;
       }
+      console.log(req.body, 'from put');
+      console.log(req.params.id, 'from put');
       res.status(200).json(post);
     });
   });

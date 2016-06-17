@@ -23,8 +23,11 @@ $(document).ready(function(){
   });
   //ajax request to get posts from api
   getPosts();
-  updatePost();
+
   deletePost();
+
+  updatePost();
+  showUpdateForm();
 });
 
 var addPost = function(postData){
@@ -34,6 +37,14 @@ var addPost = function(postData){
     $('.postView').html(data);
   });
 }
+
+//try adding a getJSON request for just one post.
+//maybe
+// var getOnePost = function(){
+//   $.getJSON('/posts/', 'id?????', function(data){
+//     //things happen
+//   });
+// }
 
 var getPosts = function(){
   $.getJSON('/posts', function(data){
@@ -55,13 +66,16 @@ var showPosts = function(results){
     post.author = results[i].author;
     post.text = results[i].text;
     post.id = results[i]._id;
-    post.html += "<div class='postView__container' data-id=" + post.id + "><h2 class='postView__title'>" + post.title + "</h2>" + "<h3 class='postView__author'>" + post.author + "</h3>" + "<div class='postView__text-wrapper'><p class='postView__text'>" + post.text + "</p></div>" + "<button class='postView__button-update'>Update</button><button class='postView__button-delete'>Delete</button> </div>"
+    post.html += "<div class='postView__container' data-id=" + post.id + "><h2 class='postView__title'>" + post.title + "</h2><h3 class='postView__author'>" + post.author + "</h3>" + "<div class='postView__text-wrapper'><p class='postView__text'>" + post.text + "</p></div>" + "<button class='postView__button-update'>Update</button><button class='postView__button-delete'>Delete</button> </div><div class='postView__update' style='display:none;' data-id=" + post.id + "><form method='POST' class='postView__update-form'><input type='text' name='title' class='postView__update-title'><input type='text' name='author' class='postView__update-author'><textarea name='text' rows='8' cols='40' class='postView__update-text'></textarea><input type='submit' value='POST' class='postView__update-post'></form></div>"
   }
   $('.postView').append(post.html);
 }
 
-var updatePostAjax = function(postId){
+var updatePostAjax = function(newTitle, newAuthor, newText, postId){
   var updatePost = {
+    title: newTitle,
+    author: newAuthor,
+    text: newText,
     postId: postId
   }
   $.ajax({
@@ -72,23 +86,48 @@ var updatePostAjax = function(postId){
   })
   .done(function(result){
     console.log(result, 'from updatePostAjax');
-
+    console.log(updatePost);
   })
   .fail(function(jqXHR, error){
     console.log(error, 'from updatePostAjax');
   });
 }
 
-var updatePost = function(){
+var showUpdateForm = function(){
   $(document).on('click', '.postView__button-update', function(evt){
     evt.preventDefault();
     var targetId = $(evt.target).parent().attr('data-id');
     var item = $(evt.target).parent();
-    var updateTitle = item.children('.postView__title');
-    var updateAuthor = item.children('.postView__author');
-    var updateText = item.children('.postView__text-wrapper');
+    var updateForm = item.next('.postView__update');
+    // var updateTitle = updateForm.children('.postView__update-title');
+    // var updateAuthor = updateForm.children('.postView__update-author');
+    // var updateText = updateForm.children('.postView__update-text');
+
     console.log(targetId, 'from updatePost');
+    updateForm.show();
     //add updatePostAjax here.
+  });
+}
+
+var updatePost = function(){
+  $(document).on('submit', '.postView__update-form', function(evt){
+    evt.preventDefault();
+    var updateForm = $('.postView__update-form');
+    var postId = updateForm.parent().attr('data-id');
+    var newTitle = updateForm.children('.postView__update-title').val();
+    var newAuthor = updateForm.children('.postView__update-author').val();
+    var newText = updateForm.children('.postView__update-text').val();
+    var changeTitle = updateForm.next('.postView__title').html(newTitle);
+    var changeAuthor = updateForm.next('.postView__author').html(newAuthor);
+    var changeText = updateForm.next('.postView__text').html(newText);
+
+    //debugger;
+    // currentTitle = newTitle;
+    // currentAuthor = newAuthor;
+    // currentText = newText;
+    updatePostAjax(newTitle, newAuthor, newText, postId);
+    updateForm.hide();
+    //getPosts();
   });
 }
 
