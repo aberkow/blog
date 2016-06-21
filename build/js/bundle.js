@@ -44,6 +44,8 @@
 /* 0 */
 /***/ function(module, exports) {
 
+	//var server = require('../../server.js');
+	
 	var mainForm = $('#main__form');
 	
 	var postContainer = $('.postView__container');
