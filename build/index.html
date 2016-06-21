@@ -2,31 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./../build/css/stylesheet.css">
+  <link rel="stylesheet" href="./css/stylesheet.css">
   <title>Blog</title>
 </head>
 <body>
   <header class="header">
-    <!-- Header stuff goes here -->
-  <!--   <div class="login">
-      <ul class="login__list">
-        <li class="login__list-item">
-          <a href="/login" class="login__list-link">Log In</a>
-        </li>
-        <li class="login__list-item">
-          <a href="/signup.html" class="login__list-link">Sign up</a>
-        </li>
-      </ul>
-    </div>-->
+    <div class="login">
+      <form action="/login" method="POST" id="login__form">
+        <input type="text" id="login__form-username" name="username" placeholder="username">
+        <input type="password" id="login__form-password" name="password" placeholder="password">
+        <input type="submit" value="Log In" id="login__form-post">
+      </form>
+    </div>
   </header>
 
-  <section class="login">
+  <section class="main">
 <!-- login form -->
-    <form action="/login" method="POST" id="login__form">
-      <input type="text" id="login__form-username" name="username" placeholder="username">
-      <input type="password" id="login__form-password" name="password" placeholder="password">
-      <input type="submit" value="Log In" id="login__form-post">
-    </form>
+
     <!-- post form -->
     <!--<form action="/posts" method="post" id="main__form">-->
     <form method="POST" id="main__form">
@@ -46,7 +38,7 @@
     <!-- Footer stuff goes here -->
   </footer>
   <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./../build/js/bundle.js">
+  <script type="text/javascript" src="./js/bundle.js">
 
   </script>
 </body>

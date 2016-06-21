@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build --inline --hot --port 3000"
+    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build --inline --hot --port 4000"
   },
   "keywords": [
     "blog",
@@ -25,6 +25,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.1",
     "gulp-sass": "^2.3.2",
+    "gulp-sequence": "^0.4.5",
     "jshint": "^2.9.2",
     "mocha": "^2.5.3",
     "node-bourbon": "^4.2.8",

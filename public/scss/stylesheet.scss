@@ -1,0 +1,36 @@
+//bring in external style, mixins, and grid layout
+@import 'normalize';
+@import 'bourbon';
+@import 'neat';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+//media query variables
+$phone: 'min-width: 375px';
+$tablet: 'min-width: 768px';
+$desktop: 'min-width: 1024px';
+
+//style variables
+$fontFamily: 'Open Sans', sans-serif;
+$mainColor: #9e9e9e;
+$accentColor: #009688;
+$textColor: #212121;
+
+* {
+  box-sizing: border-box;;
+}
+
+body {
+  background-color: $mainColor;
+}
+
+.header {
+  height: 4rem;
+}
+
+.login {
+  margin: 1rem;
+}
+
+.main {
+  @include outer-container;
+}
