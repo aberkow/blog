@@ -30,30 +30,7 @@ $(document).ready(function(){
   showUpdateForm();
 });
 
-var addPost = function(postData){
-  console.log(postData, 'from addPost');
-  $.post('/posts', postData, function(data){
-    console.log(data, 'from addPost');
-    $('.postView').html(data);
-  });
-}
-
-//try adding a getJSON request for just one post.
-//maybe
-// var getOnePost = function(){
-//   $.getJSON('/posts/', 'id?????', function(data){
-//     //things happen
-//   });
-// }
-
-var getPosts = function(){
-  $.getJSON('/posts', function(data){
-    console.log(data);
-    showPosts(data);
-  });
-}
-
-var showPosts = function(results){
+showPosts = function(results){
   var post = {
     title: '',
     author: '',
@@ -69,6 +46,43 @@ var showPosts = function(results){
     post.html += "<div class='postView__container' data-id=" + post.id + "><h2 class='postView__title'>" + post.title + "</h2><h3 class='postView__author'>" + post.author + "</h3>" + "<div class='postView__text-wrapper'><p class='postView__text'>" + post.text + "</p></div>" + "<button class='postView__button-update'>Update</button><button class='postView__button-delete'>Delete</button> </div><div class='postView__update' style='display:none;' data-id=" + post.id + "><form method='POST' class='postView__update-form'><input type='text' name='title' class='postView__update-title'><input type='text' name='author' class='postView__update-author'><textarea name='text' rows='8' cols='40' class='postView__update-text'></textarea><input type='submit' value='POST' class='postView__update-post'></form></div>"
   }
   $('.postView').append(post.html);
+}
+
+var showOnePost = function(results){
+  //perhaps use .html() to reset the contents of the post div.
+  var onePost = {
+    title: results.title,
+    author: results.author,
+    text: results.text,
+    id: results._id,
+    html: ''
+  }
+  onePost.html = "<div class='postView__container' data-id=" + onePost.id + "><h2 class='postView__title'>" + onePost.title + "</h2><h3 class='postView__author'>" + onePost.author + "</h3>" + "<div class='postView__text-wrapper'><p class='postView__text'>" + onePost.text + "</p></div>" + "<button class='postView__button-update'>Update</button><button class='postView__button-delete'>Delete</button> </div><div class='postView__update' style='display:none;' data-id=" + onePost.id + "><form method='POST' class='postView__update-form'><input type='text' name='title' class='postView__update-title'><input type='text' name='author' class='postView__update-author'><textarea name='text' rows='8' cols='40' class='postView__update-text'></textarea><input type='submit' value='POST' class='postView__update-post'></form></div>"
+  $('.postView').html(onePost.html);
+}
+
+var addPost = function(postData){
+  console.log(postData, 'from addPost');
+  $.post('/posts', postData, function(data){
+    console.log(data, 'from addPost');
+    $('.postView').html(data);
+  });
+}
+
+//try adding a getJSON request for just one post.
+//maybe
+var getOnePost = function(postId){
+  $.getJSON('/posts/', postId, function(data){
+    console.log(data, 'from getOnePost');
+    showOnePost(data);
+  });
+}
+
+var getPosts = function(){
+  $.getJSON('/posts', function(data){
+    console.log(data);
+    showPosts(data);
+  });
 }
 
 var updatePostAjax = function(newTitle, newAuthor, newText, postId){
@@ -87,6 +101,9 @@ var updatePostAjax = function(newTitle, newAuthor, newText, postId){
   .done(function(result){
     console.log(result, 'from updatePostAjax');
     console.log(updatePost);
+    $('.postView__container').remove();
+    getPosts();
+    //getOnePost(updatePost.postId);
   })
   .fail(function(jqXHR, error){
     console.log(error, 'from updatePostAjax');
@@ -99,13 +116,8 @@ var showUpdateForm = function(){
     var targetId = $(evt.target).parent().attr('data-id');
     var item = $(evt.target).parent();
     var updateForm = item.next('.postView__update');
-    // var updateTitle = updateForm.children('.postView__update-title');
-    // var updateAuthor = updateForm.children('.postView__update-author');
-    // var updateText = updateForm.children('.postView__update-text');
-
     console.log(targetId, 'from updatePost');
     updateForm.show();
-    //add updatePostAjax here.
   });
 }
 
@@ -117,17 +129,10 @@ var updatePost = function(){
     var newTitle = updateForm.children('.postView__update-title').val();
     var newAuthor = updateForm.children('.postView__update-author').val();
     var newText = updateForm.children('.postView__update-text').val();
-    var changeTitle = updateForm.next('.postView__title').html(newTitle);
-    var changeAuthor = updateForm.next('.postView__author').html(newAuthor);
-    var changeText = updateForm.next('.postView__text').html(newText);
 
-    //debugger;
-    // currentTitle = newTitle;
-    // currentAuthor = newAuthor;
-    // currentText = newText;
     updatePostAjax(newTitle, newAuthor, newText, postId);
     updateForm.hide();
-    //getPosts();
+
   });
 }
 

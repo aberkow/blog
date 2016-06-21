@@ -28,6 +28,7 @@ exports.default = function(router){
         res.status(400).json(err);
         return;
       }
+      console.log(req.body);
       res.status(200).json(posts);
     });
   });
