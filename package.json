@@ -10,8 +10,7 @@
   "keywords": [
     "blog",
     "node",
-    "mongo",
-    "react"
+    "mongo"
   ],
   "author": "Adam Berkowitz",
   "license": "ISC",
