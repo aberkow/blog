@@ -4,6 +4,7 @@
   "description": "A blog made with react, node, mongodb",
   "main": "./public/js/index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build --inline --hot --port 4000"
   },
