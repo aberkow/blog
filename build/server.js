@@ -13,6 +13,8 @@ app.set('view engine', 'ejs');
 
 require('./controllers/controllerIndex')(router);
 
+var port = process.env.PORT || 4000;
+
 //also look at json web token w express.
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,8 +45,8 @@ app.use('*', function(req, res){
   res.status(404).json({message: 'Not Found'});
 });
 
-app.listen(4000, 'localhost', function(){
-  console.log('Express listening on 4000');
+app.listen(port, function(){
+  console.log('Express listening on ' + port);
 });
 
 exports.app = app;
