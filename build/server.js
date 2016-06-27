@@ -1,3 +1,6 @@
+//use this to push just the build folder.
+//git push heroku `git subtree split --prefix build master`:master --force
+
 require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
