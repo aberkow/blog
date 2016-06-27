@@ -1,0 +1,49 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A blog made with react, node, mongodb",
+  "main": "./public/js/index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build --inline --hot --port 4000"
+  },
+  "keywords": [
+    "blog",
+    "node",
+    "mongo"
+  ],
+  "author": "Adam Berkowitz",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sequence": "^0.4.5",
+    "jshint": "^2.9.2",
+    "mocha": "^2.5.3",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^1.7.2",
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "basic-auth": "^1.0.4",
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.1",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "jquery": "^2.2.4",
+    "jsonwebtoken": "^7.0.0",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.9.2",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0"
+  }
+}
