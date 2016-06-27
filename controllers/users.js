@@ -3,29 +3,6 @@ var bcrypt = require('bcrypt');
 
 exports.default = function(router){
 
-  // router.get('/login', function(req, res){
-  //   console.log(req.body);
-  //   User.find({}, function(err, users){
-  //     if (err){
-  //       return res.status(400).json(err);
-  //     }
-  //     res.status(200).json(users);
-  //   });
-  // });
-
-  //get list of users???
-  // rouer.get('/users', function(req, res){
-  //   User.find({}, function(err, users){
-  //     if (err){
-  //       return res.status(400).json(err);
-  //     }
-  //     res.status(200).json(users);
-  //   });
-  // });
-
-//check http base authentication
-//use basic auth js as a middleware
-
   //post login w/ basic validation
   router.post('/login', function(req, res){
     //check that there's a req.body
@@ -80,24 +57,6 @@ exports.default = function(router){
       });
     }
 
-    // //salt the password
-    // bcrypt.genSalt(10, function(err, salt){
-    //   if (err){
-    //     return res.status(500).json({
-    //       message: 'Internal server error'
-    //     });
-    //   }
-    //   //has the password
-    //   bcrypt.hash(password, salt, function(err, hash){
-    //     if (err){
-    //       return res.status(500).json({
-    //         message: 'Internal server error'
-    //       });
-    //     }
-    //
-    //   });
-    // });
-
     //create the user...?
     var user = new User({
       username: username,
@@ -119,3 +78,44 @@ exports.default = function(router){
     }
   });
 }
+
+// router.get('/login', function(req, res){
+//   console.log(req.body);
+//   User.find({}, function(err, users){
+//     if (err){
+//       return res.status(400).json(err);
+//     }
+//     res.status(200).json(users);
+//   });
+// });
+
+//get list of users???
+// rouer.get('/users', function(req, res){
+//   User.find({}, function(err, users){
+//     if (err){
+//       return res.status(400).json(err);
+//     }
+//     res.status(200).json(users);
+//   });
+// });
+
+//check http base authentication
+//use basic auth js as a middleware
+
+// //salt the password
+// bcrypt.genSalt(10, function(err, salt){
+//   if (err){
+//     return res.status(500).json({
+//       message: 'Internal server error'
+//     });
+//   }
+//   //has the password
+//   bcrypt.hash(password, salt, function(err, hash){
+//     if (err){
+//       return res.status(500).json({
+//         message: 'Internal server error'
+//       });
+//     }
+//
+//   });
+// });
