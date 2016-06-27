@@ -4,5 +4,5 @@ var config = require('./config');
 
 // console.log(config, 'config from connect');
 // console.log(env, 'from connect');
-console.log(config[env].url);
+console.log(config[env].url, 'from connect.js');
 mongoose.connect(config[env].url);
