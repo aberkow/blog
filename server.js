@@ -46,7 +46,7 @@ app.use('*', function(req, res){
 });
 
 app.listen(port, function(){
-  console.log('Express listening on ' + port);
+  //console.log('Express listening on ' + port);
 });
 
 exports.app = app;
