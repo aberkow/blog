@@ -3,7 +3,8 @@
       "url": "mongodb://localhost/blog"
     },
   "heroku": {
-    "url": "mongodb://test:1234@ds023478.mlab.com:23478/heroku_w01k21nf"
+    "url": "mongodb://test:1234@ds023478.mlab.com:23478/heroku_w01k21nf",
+    "authMechanism": "ScramSHA1"
   },
   "test":{
     "url": "mongodb://localhost/blog-test"
