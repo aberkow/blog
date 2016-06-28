@@ -9,4 +9,4 @@ mongoose.connect(config[env].url);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-//mongoose.connect('mongodb://test:1234@ds023478.mlab.com:23478/heroku_w01k21nf');
+//mongoose.connect('mongodb://test:1234@ds023478.mlab.com:23478/heroku_w01k21nf?authSource=dbWithUserCredentials');
