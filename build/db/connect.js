@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 //var env = require('../environment');
 var config = require('./config');
 
-console.log(config, 'config from connect');
+//console.log(config, 'config from connect');
 //console.log(env, 'env from connect');
 //console.log(config[env].url, 'whole from connect.js');
 //mongoose.connect(config[env].url);
