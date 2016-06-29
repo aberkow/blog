@@ -1,15 +1,8 @@
 {
-  "production":{
+  "localhost":{
       "url": "mongodb://localhost/blog"
     },
-  "heroku": {
-    "url": "mongodb://test:1234@ds023478.mlab.com:23478/heroku_w01k21nf"
-  },
-  "test":{
-    "url": "mongodb://localhost/blog-test"
-  },
-  "development":{
-    "url": "mongodb://localhost/blog-dev"
+  "production": {
+    "url": "process.env.MONGODB_URI"
   }
-
 }
