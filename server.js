@@ -9,7 +9,7 @@ var app = express();
 var router = express.Router();
 //the controller has to go after the router otherwise it throws an error of undefined.
 
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 require('./controllers/controllerIndex')(router);
 
@@ -46,7 +46,7 @@ app.use('*', function(req, res){
 });
 
 app.listen(port, function(){
-  //console.log('Express listening on ' + port);
+  console.log('Express listening on ' + port);
 });
 
 exports.app = app;

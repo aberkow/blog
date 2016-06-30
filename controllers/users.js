@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt');
 exports.default = function(router){
 
   //post login w/ basic validation
-  router.post('/login', function(req, res){
+  router.post('/', function(req, res){
     //check that there's a req.body
     console.log(req.body, 'check proper request');
     if (!req.body){
@@ -65,8 +65,8 @@ exports.default = function(router){
 
     //every time a user is logged in there needs to be a response.
     if (user) {
-
-      res.redirect('../posts');
+      res.redirect('../');
+      // res.redirect('../posts');
       // res.status(200).json({
       //   message: 'user logged in'
       // });

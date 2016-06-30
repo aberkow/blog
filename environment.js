@@ -1,1 +1,1 @@
-module.exports = 'heroku';
+module.exports = 'localhost' || 'heroku';

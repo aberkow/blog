@@ -20,6 +20,9 @@ $(document).ready(function(){
       console.log('Please fill out the post.');
     } else {
       addPost(post);
+      // $('#main__form-title').val('');
+      // $('#main__form-author').val('');
+      // $('#main__form-text').val('');
     }
     getPosts();
   });
@@ -71,14 +74,15 @@ var addPost = function(postData){
   });
 }
 
+
 //try adding a getJSON request for just one post.
 //maybe
-var getOnePost = function(postId){
-  $.getJSON('/posts/', postId, function(data){
-    console.log(data, 'from getOnePost');
-    showOnePost(data);
-  });
-}
+// var getOnePost = function(postId){
+//   $.getJSON('/posts/', postId, function(data){
+//     console.log(data, 'from getOnePost');
+//     showOnePost(data);
+//   });
+// }
 
 var getPosts = function(){
   $.getJSON('/posts', function(data){

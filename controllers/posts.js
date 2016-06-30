@@ -22,6 +22,29 @@ exports.default = function(router){
   //   });
   // });
 
+  // router.get('/posts', function(req, res){
+  //   Post.find({}, function(err, posts){
+  //     if (err){
+  //       res.status(400).json(err);
+  //       return;
+  //     }
+  //     console.log(req.body);
+  //     //res.status(200).json(posts);
+  //     res.sendStatus(200);
+  //   });
+  // });
+
+  // router.get('/posts', function(req, res){
+  //   Post.find({}, function(err, posts){
+  //     if (err){
+  //       res.status(400).json(err);
+  //       return;
+  //     }
+  //     console.log(req.body);
+  //     res.redirect(302, '/');
+  //   });
+  // })
+
   router.get('/posts', function(req, res){
     Post.find({}, function(err, posts){
       if (err){
