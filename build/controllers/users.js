@@ -106,8 +106,8 @@ exports.default = function(router){
 
     //every time a user is logged in there needs to be a response.
     if (user) {
-
-      res.redirect('../posts');
+      res.redirect('../');
+      //res.redirect('../posts');
       // res.status(200).json({
       //   message: 'user logged in'
       // });
