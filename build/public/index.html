@@ -6,18 +6,33 @@
   <title>Blog</title>
 </head>
 <body>
-  <header class="header">
-    <div class="login">
-      <form action="/login" method="POST" id="login__form">
-        <input type="text" id="login__form-username" name="username" placeholder="username">
-        <input type="password" id="login__form-password" name="password" placeholder="password">
-        <input type="submit" value="Log In" id="login__form-post">
-      </form>
-    </div>
+  <header id="header">
+    <!-- Header stuff goes here -->
+    <h1 id="header__title">Blog</h1>
+    <form action="/" method="POST" id="login__form">
+      <input type="text" id="login__form-username" name="username" placeholder="username">
+      <input type="password" id="login__form-password" name="password" placeholder="password">
+      <input type="submit" value="Log In" id="login__form-post">
+    </form>
+    <!-- <div class="login">
+      <ul class="login__list">
+        <li class="login__list-item">
+          <a href="/login" class="login__list-link">Log In</a>
+        </li>
+        <li class="login__list-item">
+          <a href="/signup.html" class="login__list-link">Sign up</a>
+        </li>
+      </ul>
+    </div>-->
   </header>
 
-  <section class="main">
+  <section id="writing">
 <!-- login form -->
+    <!-- <form action="/" method="POST" id="login__form">
+      <input type="text" id="login__form-username" name="username" placeholder="username">
+      <input type="password" id="login__form-password" name="password" placeholder="password">
+      <input type="submit" value="Log In" id="login__form-post">
+    </form> -->
 
     <!-- post form -->
     <!--<form action="/posts" method="post" id="main__form">-->
@@ -37,6 +52,37 @@
   <footer class="footer">
     <!-- Footer stuff goes here -->
   </footer>
+  <!-- <header class="header">
+    <div class="login">
+      <form action="/login" method="POST" id="login__form">
+        <input type="text" id="login__form-username" name="username" placeholder="username">
+        <input type="password" id="login__form-password" name="password" placeholder="password">
+        <input type="submit" value="Log In" id="login__form-post">
+      </form>
+    </div>
+  </header>
+
+  <section class="main"> -->
+<!-- login form -->
+
+    <!-- post form -->
+    <!--<form action="/posts" method="post" id="main__form">-->
+    <!-- <form method="POST" id="main__form">
+      <input type="text" name="title" id="main__form-title" placeholder="Title">
+      <input type="text" name="author" id="main__form-author" placeholder="Author">
+      <textarea name="text" rows="8" cols="40" id="main__form-text"></textarea>
+      <input type="submit" value="Post" id="main__form-post">
+    </form>
+  </section> -->
+
+  <!-- <section class="postView"> -->
+    <!-- <p class="postView__title"></p>
+    <p class="postView__author"></p>
+    <p class="postView__text"></p> -->
+  <!-- </section>
+  <footer class="footer"> -->
+    <!-- Footer stuff goes here -->
+  <!-- </footer> -->
   <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
   <!-- <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
   <script type="text/javascript" src="../js/bundle.js">
