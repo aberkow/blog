@@ -366,17 +366,149 @@ html {
 body {
   background-color: #9e9e9e; }
 
-.header {
-  height: 4rem; }
+#header {
+  background-color: #009688;
+  height: 8rem; }
+  #header #header__title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2rem;
+    color: #212121;
+    margin: 0;
+    padding: 0.5rem;
+    display: inline-block; }
+  @media screen and (min-width: 768px) {
+    #header {
+      height: 4rem; } }
 
-.login {
-  margin: 1rem; }
+#login__form {
+  display: block;
+  padding: 0 0.5rem; }
+  @media screen and (min-width: 768px) {
+    #login__form {
+      display: inline-block; } }
 
-.main {
+#login__form-post {
+  margin-top: 0.5rem;
+  background-color: #4f4f4f;
+  border: 1px solid #282828;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer; }
+  #login__form-post:hover {
+    background-color: #80cbc4; }
+
+#writing {
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto; }
-  .main::after {
+  margin-right: auto;
+  margin: 1rem auto; }
+  #writing::after {
     clear: both;
     content: "";
     display: table; }
+  #writing #main__form {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-left: 9%; }
+    #writing #main__form:last-child {
+      margin-right: 0; }
+    @media screen and (min-width: 768px) {
+      #writing #main__form {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 25.58941%; }
+        #writing #main__form:last-child {
+          margin-right: 0; } }
+    @media screen and (min-width: 1024px) {
+      #writing #main__form {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 25.58941%; }
+        #writing #main__form:last-child {
+          margin-right: 0; } }
+
+#main__form-title, #main__form-author, #main__form-post, .postView__update-title, .postView__update-author, .postView__update-post {
+  display: block; }
+
+.postView {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .postView::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .postView .postView__container {
+    margin-left: 9%;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .postView .postView__container:last-child {
+      margin-right: 0; }
+    @media screen and (min-width: 768px) {
+      .postView .postView__container {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 25.58941%; }
+        .postView .postView__container:last-child {
+          margin-right: 0; } }
+    @media screen and (min-width: 1024px) {
+      .postView .postView__container {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 25.58941%; }
+        .postView .postView__container:last-child {
+          margin-right: 0; } }
+  .postView .postView__update {
+    margin: 0.5rem 0 0.5rem 9%;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .postView .postView__update:last-child {
+      margin-right: 0; }
+    @media screen and (min-width: 768px) {
+      .postView .postView__update {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 25.58941%; }
+        .postView .postView__update:last-child {
+          margin-right: 0; } }
+    @media screen and (min-width: 1024px) {
+      .postView .postView__update {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        margin-left: 25.58941%; }
+        .postView .postView__update:last-child {
+          margin-right: 0; } }
+
+.postView__title, .postView__author {
+  color: #009688; }
+
+.postView__title, .postView__author, .postView__text {
+  font-family: "Open Sans", sans-serif; }
+
+#main__form-post, .postView__button-update, .postView__button-delete, .postView__update-post {
+  background-color: #4f4f4f;
+  border: 1px solid #282828;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 0.5rem;
+  cursor: pointer; }
+  #main__form-post:hover, .postView__button-update:hover, .postView__button-delete:hover, .postView__update-post:hover {
+    background-color: #80cbc4; }

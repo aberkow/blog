@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- <link rel="stylesheet" href="./../build/css/stylesheet.css"> -->
+  <link rel="stylesheet" href="./css/stylesheet.css">
   <title>Blog</title>
 </head>
 <body>
-  <header class="header">
+  <header id="header">
     <!-- Header stuff goes here -->
-  <!--   <div class="login">
+    <h1 id="header__title">Blog</h1>
+    <form action="/" method="POST" id="login__form">
+      <input type="text" id="login__form-username" name="username" placeholder="username">
+      <input type="password" id="login__form-password" name="password" placeholder="password">
+      <input type="submit" value="Log In" id="login__form-post">
+    </form>
+    <!-- <div class="login">
       <ul class="login__list">
         <li class="login__list-item">
           <a href="/login" class="login__list-link">Log In</a>
@@ -20,18 +26,14 @@
     </div>-->
   </header>
 
-  <section class="login">
+  <section id="writing">
 <!-- login form -->
-    <form action="/" method="POST" id="login__form">
-      <input type="text" id="login__form-username" name="username" placeholder="username">
-      <input type="password" id="login__form-password" name="password" placeholder="password">
-      <input type="submit" value="Log In" id="login__form-post">
-    </form>
-    <!-- <form action="/login" method="POST" id="login__form">
+    <!-- <form action="/" method="POST" id="login__form">
       <input type="text" id="login__form-username" name="username" placeholder="username">
       <input type="password" id="login__form-password" name="password" placeholder="password">
       <input type="submit" value="Log In" id="login__form-post">
     </form> -->
+
     <!-- post form -->
     <!--<form action="/posts" method="post" id="main__form">-->
     <form method="POST" id="main__form">

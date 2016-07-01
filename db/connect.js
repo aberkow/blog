@@ -1,12 +1,12 @@
-// //
-// var mongoose = require('mongoose');
-// // // var env = require('../environment');
-// // // var config = require('./config');
-// //
-// // //console.log(config, 'config from connect');
-// // //console.log(env, 'env from connect');
-// // //console.log(config[env].url, 'whole from connect.js');
-// // //mongoose.connect(config[env].url);
+//
+var mongoose = require('mongoose');
+var env = require('../environment');
+var config = require('./config');
+//
+// //console.log(config, 'config from connect');
+// //console.log(env, 'env from connect');
+console.log(config[env].url, 'whole from connect.js');
+mongoose.connect(config[env].url);
 // // var mongodb_uri = 'mongodb://adam:adam@ds023478.mlab.com:23478/heroku_w0lk21nf';
 // //
 // mongoose.connect(mongodb_uri, function(error){

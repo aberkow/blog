@@ -23,14 +23,109 @@ body {
   background-color: $mainColor;
 }
 
-.header {
-  height: 4rem;
+#header {
+  background-color: $accentColor;
+  height: 8rem;
+  #header__title {
+    font-family: $fontFamily;
+    font-size: 2rem;
+    color: $textColor;
+    margin: 0;
+    padding: 0.5rem;
+    display: inline-block;
+  }
+  @media screen and ($tablet){
+    height: 4rem;
+  }
+
 }
 
-.login {
-  margin: 1rem;
+#login__form {
+  display: block;
+  padding: 0 0.5rem;
+  @media screen and ($tablet){
+    display: inline-block;
+  }
 }
 
-.main {
+#login__form-post {
+  margin-top: 0.5rem;
+  background-color: shade($mainColor, 50%);
+  border: 1px solid shade($mainColor, 75%);
+  color: white;
+  font-family: $fontFamily;
+  cursor: pointer;
+    &:hover {
+      background-color: tint($accentColor, 50%);
+    }
+}
+
+#writing {
   @include outer-container;
+  margin: 1rem auto;
+  #main__form {
+    @include span-columns(6);
+    margin-left: 9%;
+    @media screen and ($tablet){
+      @include span-columns(6);
+      @include shift(3);
+    }
+    @media screen and ($desktop){
+      @include span-columns(6);
+      @include shift(3);
+    }
+  }
+}
+
+#main__form-title, #main__form-author, #main__form-post, .postView__update-title, .postView__update-author, .postView__update-post {
+  display: block;
+}
+
+.postView {
+  @include outer-container;
+  .postView__container {
+    margin-left: 9%;
+    @include span-columns(6);
+    @media screen and ($tablet){
+      @include span-columns(6);
+      @include shift(3);
+    }
+    @media screen and ($desktop){
+      @include span-columns(6);
+      @include shift(3);
+    }
+  }
+  .postView__update {
+    //margin-left: 9%;
+    margin: 0.5rem 0 0.5rem 9%;
+    @include span-columns(6);
+    @media screen and ($tablet){
+      @include span-columns(6);
+      @include shift(3);
+    }
+    @media screen and ($desktop){
+      @include span-columns(6);
+      @include shift(3);
+    }
+  }
+}
+
+.postView__title, .postView__author {
+  color: $accentColor;
+}
+
+.postView__title, .postView__author, .postView__text {
+  font-family: $fontFamily;
+}
+
+#main__form-post, .postView__button-update, .postView__button-delete, .postView__update-post {
+  background-color: shade($mainColor, 50%);
+  border: 1px solid shade($mainColor, 75%);
+  color: white;
+  font-family: $fontFamily;
+  margin-left: 0.5rem;
+  cursor: pointer;
+    &:hover {
+      background-color: tint($accentColor, 50%);
+    }
 }
